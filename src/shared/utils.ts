@@ -1,8 +1,11 @@
-import { QuickPickItem } from 'vscode';
+import { QuickPickItem, ExtensionContext } from 'vscode';
 import { LeekFundConfig } from './leekConfig';
 import globalState from '../globalState';
 import { LeekTreeItem } from './leekTreeItem';
 import { SortType, StockCategory } from './typed';
+import * as path from 'path';
+import * as fs from 'fs';
+import { EventEmitter } from 'events';
 
 const stockTimes = allStockTimes();
 
@@ -71,13 +74,14 @@ export const clean = (elements: Array<string | number>) => {
  * toFixed 解决js精度问题，使用方式：toFixed(value)
  * @param {Number | String} value
  * @param {Number} precision 精度，默认2位小数，需要取整则传0
+ * @param {Number} percent 倍增
  * 该方法会处理好以下这些问题
  * 1.12*100=112.00000000000001
  * 1.13*100=112.9999999999999
  * '0.015'.toFixed(2)结果位0.01
  * 1121.1/100 = 11.210999999999999
  */
-export const toFixed = (value = 0, precision = 2) => {
+export const toFixed = (value = 0, precision = 2, percent = 1) => {
   const num = Number(value);
   if (Number.isNaN(num)) {
     return 0;
@@ -85,13 +89,17 @@ export const toFixed = (value = 0, precision = 2) => {
   if (num < Math.pow(-2, 31) || num > Math.pow(2, 31) - 1) {
     return 0;
   }
+  let newNum = value * percent;
   // console.log(num, precision)
   if (precision < 0 || typeof precision !== 'number') {
-    return value;
+    return newNum * percent;
   } else if (precision > 0) {
-    return Math.round(num * Math.pow(10, precision)) / Math.pow(10, precision);
+    newNum = Math.round(num * Math.pow(10, precision) * percent) / Math.pow(10, precision);
+    return newNum;
   }
-  return Math.round(num);
+  newNum = Math.round(num);
+
+  return newNum;
 };
 
 export const calcFixedPirceNumber = (
@@ -373,3 +381,11 @@ export function isHoliday(market: string): boolean {
   }
   return false;
 }
+
+export function getTemplateFileContent(tplName: string) {
+  const tplPath = path.join(globalState.context.extensionPath, 'template', tplName);
+  const html = fs.readFileSync(tplPath, 'utf-8');
+  return html;
+}
+
+export const events = new EventEmitter();
