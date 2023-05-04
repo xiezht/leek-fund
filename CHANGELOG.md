@@ -1,4 +1,367 @@
-# ChangeLog
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [3.2.1](https://github.com/LeekHub/leek-fund/compare/v3.2.0...v3.2.1) (2023-03-22)
+
+
+### Bug Fixes
+
+* pr ci error ([2b0deab](https://github.com/LeekHub/leek-fund/commit/2b0deabdb42dc4926c1693f2333f59e489a3de7b))
+
+## [3.2.0](https://github.com/LeekHub/leek-fund/compare/v3.1.1...v3.2.0) (2023-03-12)
+
+
+### Features
+
+* 增加在个性定制中可切换股票详情K线图样式 ([3d267eb](https://github.com/LeekHub/leek-fund/commit/3d267eb4b685b6c7ec0dbde641909a5243a059e1))
+
+
+### Bug Fixes
+
+* 修复重启vscode后需重新设置选择K线图样式 ([b3e218a](https://github.com/LeekHub/leek-fund/commit/b3e218a4eae3e5c773759eb2112c47c3dc507e45))
+
+### [3.1.1](https://github.com/LeekHub/leek-fund/compare/v3.1.0...v3.1.1) (2023-02-25)
+
+
+### Bug Fixes
+
+* build error ([fbf73ca](https://github.com/LeekHub/leek-fund/commit/fbf73cabe2c696a2a2aaf8278b94f2bcbc1b683f))
+
+## [3.1.0](https://github.com/LeekHub/leek-fund/compare/v3.0.3...v3.1.0) (2023-02-25)
+
+
+### Features
+
+* **状态栏:** 今日行情新增更新时间字段 ([a0506aa](https://github.com/LeekHub/leek-fund/commit/a0506aa8e7cb07b8e26f69ac805c3232ee4d25ab))
+
+### [3.0.3](https://github.com/LeekHub/leek-fund/compare/v3.0.2...v3.0.3) (2023-01-26)
+
+### [3.0.2](https://github.com/LeekHub/leek-fund/compare/v3.0.1...v3.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* 修复事件失败问题 ([a9a1619](https://github.com/LeekHub/leek-fund/commit/a9a1619e8e9240883cdd82b93eeeb294207e8397))
+
+### [3.0.1](https://github.com/LeekHub/leek-fund/compare/v2.10.2...v3.0.1) (2023-01-26)
+
+
+### Bug Fixes
+
+* 修复keywords 数量过多，发布插件失败 ([e5381c7](https://github.com/LeekHub/leek-fund/commit/e5381c7aa0af6f4ffd30c874975461420deb5f20))
+
+## [2.10.0](https://github.com/LeekHub/leek-fund/compare/v2.9.4...v2.10.0) (2023-01-26)
+
+### Features
+
+- 状态栏最多支持添加 6 个 close [#366](https://github.com/LeekHub/leek-fund/issues/366) ([40731b9](https://github.com/LeekHub/leek-fund/commit/40731b9fec3c00851b7b4bbebe69eaddb60a01de))
+
+### Bug Fixes
+
+- **forex:** 修复 cheerio 导入错误 ([ee924c1](https://github.com/LeekHub/leek-fund/commit/ee924c19d73493f705d66529068cf5f63ac09080))
+
+## [2.9.0](https://github.com/LeekHub/leek-fund/compare/v2.8.2...v2.9.0) (2022-09-13)
+
+### Features
+
+- 更新基金数据 ([63a4dea](https://github.com/LeekHub/leek-fund/commit/63a4dea10ffcf259098b3e0b44a443e7e903ad2f))
+
+### Bug Fixes
+
+- **stock:** 修复深证指数面板显示 bug ([c9572a2](https://github.com/LeekHub/leek-fund/commit/c9572a2419e63477a0ee571833680f37742c032a))
+
+### [2.8.2](https://github.com/LeekHub/leek-fund/compare/v2.8.0...v2.8.2) (2022-09-03)
+
+## [2.8.0](https://github.com/giscafer/leek-fund/compare/v2.7.3...v2.8.0) (2022-09-03)
+
+### Features
+
+- **forex:** 简单的外汇价格查看功能 ([e9b8ad9](https://github.com/giscafer/leek-fund/commit/e9b8ad9a0ac9a235813cf19b6c8accd29100a278))
+
+### Bug Fixes
+
+- **forex:** 降低 cheerio 版本以适应 typescript 3.8.3 ([25a6262](https://github.com/giscafer/leek-fund/commit/25a626231366730d05dcc73fdc854eb95ee2146b))
+
+### [2.7.3](https://github.com/giscafer/leek-fund/compare/v2.7.2...v2.7.3) (2022-08-04)
+
+### Bug Fixes
+
+- OUTPUT Flash News 开关提示 ([b2f4429](https://github.com/giscafer/leek-fund/commit/b2f44293e4410725222350b12b6ccf1de6b6586f))
+
+### [2.7.2](https://github.com/giscafer/leek-fund/compare/v2.7.1...v2.7.2) (2022-07-15)
+
+### Bug Fixes
+
+- 修复编译目标版本过低导致的运行错误 ([bb73542](https://github.com/giscafer/leek-fund/commit/bb7354219fd606a091f1c5367d0805d551f07ab8))
+
+### [2.7.1](https://github.com/giscafer/leek-fund/compare/v2.7.0...v2.7.1) (2022-07-05)
+
+### Bug Fixes
+
+- 修复状态栏计算收益不准确的问题 ([7c0eaf6](https://github.com/giscafer/leek-fund/commit/7c0eaf68b04bc36ed2d054cb1fcfc9f42956fe8c))
+- **韭菜中心>数据中心:** 板块行情增加默认值，避免点击工具菜单出现无数据现象 ([c082271](https://github.com/giscafer/leek-fund/commit/c08227157b72905ddda49cdcbd64642b45f24f79))
+
+## [2.7.0](https://github.com/giscafer/leek-fund/compare/v2.6.0...v2.7.0) (2022-06-15)
+
+### Features
+
+- **stock:** 韭菜中心=>数据中心 增加板块行情 ([82ef71d](https://github.com/giscafer/leek-fund/commit/82ef71d74ff94cb7724faba7e6eb598732135b11))
+
+## [2.6.0](https://github.com/giscafer/leek-fund/compare/v2.5.0...v2.6.0) (2022-05-06)
+
+### Features
+
+- **future:** 期货代码格式统一，新增股指期货和海外期货支持，兼容旧格式代码 ([2b79611](https://github.com/giscafer/leek-fund/commit/2b796117cf2cf4d4cdc8850e6490688eff0ed44d))
+
+## [2.5.0](https://github.com/giscafer/leek-fund/compare/v2.4.0...v2.5.0) (2022-04-27)
+
+### Features
+
+- **statusbar:** 股票状态栏根据需要展示的股票数量进行自动隐藏和显示 fixed [#279](https://github.com/giscafer/leek-fund/issues/279) ([58ee064](https://github.com/giscafer/leek-fund/commit/58ee0646cde23c9a5e61bd7fef3da43099a2edbd))
+- **stock:** 增加股票上移和下移功能 ([135cade](https://github.com/giscafer/leek-fund/commit/135cade9bb00e0e7c16d6a49b2df1d424c752dcf))
+
+### Bug Fixes
+
+- **fund:** fixed [#315](https://github.com/giscafer/leek-fund/issues/315) ([088f53a](https://github.com/giscafer/leek-fund/commit/088f53ac7a042eb4a396b3c5e0cb19dc02d9f855))
+- 使用 https 协议，防止在 gitpod coding 等 ide 环境下 http 协议被浏览器安全策略限制 ([1110b75](https://github.com/giscafer/leek-fund/commit/1110b75585c6f7b81a004bd6207f66ddb7a2aacd))
+
+## [2.4.0](https://github.com/giscafer/leek-fund/compare/v2.3.1...v2.4.0) (2022-04-12)
+
+### Features
+
+- **stock:** 港股改用雪球数据源 fixed [#296](https://github.com/giscafer/leek-fund/issues/296) ([a63b2e8](https://github.com/giscafer/leek-fund/commit/a63b2e82ba862e396eda750ff3eb7b52f0ffdb4b))
+- **stock:** 股票搜索使用雪球数据源，期货搜索使用新浪数据源 fixed [#303](https://github.com/giscafer/leek-fund/issues/303) ([3b78085](https://github.com/giscafer/leek-fund/commit/3b78085e805fa33e630f4345e4d50cf33fa03943))
+
+### Bug Fixes
+
+- **fund:** 移除基金或者基金分组的时候需要清空一下 fundList，避免 fundList 元素数量一直增长 ([ee444ef](https://github.com/giscafer/leek-fund/commit/ee444ef60e55719db4975ff9b2979591c555c64e))
+- **stock:** 点击标普 500 和恒生指数展示股票实时走势 ([c0f724a](https://github.com/giscafer/leek-fund/commit/c0f724a640daa32c01f5d3ba7b507b133f178afa))
+
+### [2.3.1](https://github.com/giscafer/leek-fund/compare/v2.3.0...v2.3.1) (2022-03-29)
+
+### Bug Fixes
+
+- **fund:** 过滤非法的基金代码 ([5ce8e34](https://github.com/giscafer/leek-fund/commit/5ce8e34238c20f9781faef1d3ebe0157b638d5ba))
+
+## [2.3.0](https://github.com/giscafer/leek-fund/compare/v2.2.0...v2.3.0) (2022-03-28)
+
+### Features
+
+- **icon:** 增加无图标选项 [#237](https://github.com/giscafer/leek-fund/issues/237) ([65d906f](https://github.com/giscafer/leek-fund/commit/65d906f4b8fe64136bab8d61625f6c59adc0a107))
+
+### Bug Fixes
+
+- **fund:** 修复基金提醒功能 ([41128d6](https://github.com/giscafer/leek-fund/commit/41128d6e5aeee76b76d3835e1517d45b158d2a30))
+- **leekcenter:** Fixed [#294](https://github.com/giscafer/leek-fund/issues/294) ([48ac310](https://github.com/giscafer/leek-fund/commit/48ac310fb366676b80b93e7f829ef0a7ec0a7d69))
+
+## [2.2.0](https://github.com/giscafer/leek-fund/compare/v2.1.3...v2.2.0) (2022-03-27)
+
+### Features
+
+- **icon:** 增加绿涨红跌箭头选择 ([74b3bcc](https://github.com/giscafer/leek-fund/commit/74b3bcc8ce0fde68c0c255ac6a33704335794d80))
+
+### Bug Fixes
+
+- **fund:** fixed [#291](https://github.com/giscafer/leek-fund/issues/291) ([da0b63d](https://github.com/giscafer/leek-fund/commit/da0b63d3ba937b6cda2b8b59890a27021885dfe8))
+- **fund:** 自动过滤无法查询到信息的基金代码 ([c1f3742](https://github.com/giscafer/leek-fund/commit/c1f3742cf4a18255cb6a8ffac169227286952c43))
+
+### [2.1.3](https://github.com/giscafer/leek-fund/compare/v2.1.2...v2.1.3) (2022-03-23)
+
+### Bug Fixes
+
+- **amount:** fixed [#287](https://github.com/giscafer/leek-fund/issues/287) ([8815367](https://github.com/giscafer/leek-fund/commit/88153675fa96e9da2384af3b696f9f9a82645731))
+- **fund:** 基金列表去重失败的问题 ([6bf6ff8](https://github.com/giscafer/leek-fund/commit/6bf6ff8d5b21312e3b759cc9e50fd5d5fd411ba6))
+
+### [2.1.2](https://github.com/giscafer/leek-fund/compare/v2.1.1...v2.1.2) (2022-03-20)
+
+### Bug Fixes
+
+- ci ([ae1e5ff](https://github.com/giscafer/leek-fund/commit/ae1e5ff3732d00d9b47ae3673a204ae9f0c77475))
+
+### 2.1.1 (2022-03-20)
+
+## [2.1.0](https://github.com/giscafer/leek-fund/compare/v2.0.0...v2.1.0) (2022-03-19)
+
+### Features
+
+- **fund:** 增加基金分组删除确认 ([90f7b8d](https://github.com/giscafer/leek-fund/commit/90f7b8df0b63fd1fe91f89bcc29371c5274571ad))
+- **fund:** 增加基金分组删除确认 ([e6256d6](https://github.com/giscafer/leek-fund/commit/e6256d6425908a6bd8f1e1223ae07414b0cb3526))
+- **fund:** 增加基金分组删除确认 ([10ab782](https://github.com/giscafer/leek-fund/commit/10ab7826d5b46b976e6a6edbb5ff41b8edc70e23))
+- **fund:** 增加基金分组功能 ([30ec485](https://github.com/giscafer/leek-fund/commit/30ec485a2444bed5f41b113c180bf8fc52af3623))
+- **fund:** 增加基金分组功能 ([5b39f69](https://github.com/giscafer/leek-fund/commit/5b39f6955fa86f47e93a20cbabbb1ecdca78efdb))
+- **fund:** 增加基金分组功能 ([d7bf9f1](https://github.com/giscafer/leek-fund/commit/d7bf9f18393b2372bbb81b54bfa25683bd61b43c))
+- **fund:** 增加基金分组自定义名称功能 ([19143c2](https://github.com/giscafer/leek-fund/commit/19143c2cc92f7127f21784431e78a0f8591e257a))
+- **leektreeitem:** 新增启用高亮选项 ([a755700](https://github.com/giscafer/leek-fund/commit/a7557003cf4af52b15297965d2f14c1c84c158b3))
+- **leektreeitem:** 针对涨的股票或基金，进行高亮显示 ([0292f68](https://github.com/giscafer/leek-fund/commit/0292f683f6cf34f4f3f5eaf6803422f25e6b92de))
+- **readme:** 调整韭菜盒子的英文介绍 ([72dc913](https://github.com/giscafer/leek-fund/commit/72dc9136a987185baffb61bfdb5bbfdfb0a6b406))
+- **stock:** 新增可选默认展开对应股票市场的选项 ([acdfcba](https://github.com/giscafer/leek-fund/commit/acdfcba207a3239314a3ea4849b706ebbba38234))
+- 快捷添加至状态栏按钮，及切换状态栏个股添加删除判读 ([9fcf135](https://github.com/giscafer/leek-fund/commit/9fcf1354f1928d5b6a7ee5a1af0cfd9189de5c12))
+- **数据中心:** add 沪港深通 chart ([1172585](https://github.com/giscafer/leek-fund/commit/11725856feea7895e5a9233c0a404fc0203c66fb))
+- 期货功能 ([e6d1522](https://github.com/giscafer/leek-fund/commit/e6d1522e0592750106a448abc1644f24cf804b8f))
+
+### Bug Fixes
+
+- eslint warning ([058f598](https://github.com/giscafer/leek-fund/commit/058f5988e59a065522935d16bc69812698fd0180))
+- **fund:** warning ([5f0138c](https://github.com/giscafer/leek-fund/commit/5f0138c60da78d5e33f8f71821534293189b1499))
+- **fund:** 迁移用户基金之后才展示基金数据 ([8954801](https://github.com/giscafer/leek-fund/commit/8954801a1bcec1489e5965587a658cc40fc38ee3))
+- hq.sinajs.cn/list 接口添加 Referer ([e692d82](https://github.com/giscafer/leek-fund/commit/e692d825b873c2fe9dd3189ef89a853dcfc84f98))
+- 修复无法保存持仓金额的问题 ([79f5e0f](https://github.com/giscafer/leek-fund/commit/79f5e0faf699c46d750a7d5e3018258fcf5731e8))
+- 修复期货在添加建议后不支持的问题 ([fb74913](https://github.com/giscafer/leek-fund/commit/fb7491303a0427c66c91ecf5dcd140f1b00ac60a))
+- 搜索建议取消 type 解决一些股票搜不到的问题 ([5af88ba](https://github.com/giscafer/leek-fund/commit/5af88baeba0110ccda17f9bd1b52bd91c433ea10))
+- 更新持仓金额和成本价后，更新基金收益率 ([a43edde](https://github.com/giscafer/leek-fund/commit/a43eddeac58f8b1d46d0d6f6f325a32e42f00746))
+
+## [2.0.7]
+
+- fix: https://github.com/LeekHub/leek-fund/issues/280
+
+## [2.0.6]
+
+- fix: 港股搜索 bug
+- feat: 新增可选默认展开对应股票市场的选项
+
+## [2.0.5]
+
+- fix: 股票接口问题 pr by @gittig11
+
+## [2.0.4]
+
+- fix: 部分股票搜索不到问题
+
+## [2.0.3]
+
+- feat: 支持快捷添加股票到状态栏
+
+## [2.0.2]
+
+- feat: 添加使用大写字母搜索查看期货行情功能。
+
+## [2.0.0]
+
+- feat: 韭菜之家> 数据统计>牛熊风向标
+
+## [1.9.9]
+
+- fix: 修复雪球 cookie 问题
+
+## [1.9.8]
+
+- chore: 优化雪球 cookie 问题，自动获取 cookie，无需手动设置
+- chore: 新增支持新基金。
+
+## [1.9.7]
+
+- fix: VSCode 1.56.0 版本 icon 不能自适应 bug
+
+## [1.9.6]
+
+- fix: 韭菜中心>基金详情，持有 3 月盈利概率数据显示错误
+- fix: Promise.allSettled is not a function hack
+
+## [1.9.5]
+
+- chore: 更新基金数据
+- fix: 百度 libs 的静态文件部分用户存在加载失败
+- fix: 快讯缓存过多导致占用内存过高，韭菜中心卡顿问题
+
+## [1.9.4]
+
+- feat: 新版韭菜中心，功能&体验升级 🚀 :rocket:
+- feat: 支持状态栏基金和股票分开控制显示与隐藏
+- fix: 当前价为空时计算收益问题
+
+## [1.9.2]
+
+- fix: 基金收益日期显示问题
+
+## [1.9.1]
+
+- feat: 状态栏新增基金收益统计
+- feat: 韭菜中心新增主力资金流向、北向资金流向、韭菜盒子社区入口
+- refactor: 资金流向页面重构，增强功能和交互入口
+
+## [1.9.0]
+
+- fix: binance 请求失败会提示错误 data of undefined 问题
+- chore: 优化图片分享加上日期
+
+## [1.8.7]
+
+- feat: 设置持仓金额页面新增收益率排序功能
+- chore: 集成 Amplitude 统计
+
+## [1.8.6]
+
+- feat: 基金持仓金额页新增刷新按钮
+- feat: 持仓分享图片生成
+
+## [1.8.5]
+
+- feat: 选股宝异动快讯，金十全量输出 @zqjimlove
+- fix: 修复金十的消息显示 undefined @zqjimlove
+- fix: statusbar 股价更新滞后问题 @zqjimlove
+
+## [1.8.4]
+
+- feat: OUTPUT 窗口新增金十快讯 @zqjimlove
+- fix: 当设置股价下跌提醒时，在早上未开盘期间，股价为 0.00，这个时候会提示下跌到了 0.00 @wujunchuan
+
+## [1.8.3]
+
+- chore: 因 Github 限制，gitalk 实现的 issue 评论功能暂时关闭 @zqjimlove
+
+## [1.8.2]
+
+- fix: 修复评论 401 问题 @zqjimlove
+
+## [1.8.1]
+
+- fix: 修复 issue 无法创建 labels @zqjimlove
+
+## [1.8.0]
+
+- feat: 新增韭菜讨论中心，支持基金和股票评论 🚀 :rocket: @zqjimlove
+
+## [1.7.7]
+
+- feat: 基金详情图表支持黑色背景模式 @laampui
+- fix: 基金涨跌排序切换失效的问题 @wujunchuan
+- fix: 股票提醒设置不起作用 bug @zqjimlove
+- chore: 配置 2021 年香港和美股放假时间 @iporer
+
+## [1.7.6]
+
+- feat: 新增对数字货币行情的简单支持 @wujunchuan
+
+## [1.7.5]
+
+- fix: 竞价阶段部分个股显示-100% @zqjimlove
+- fix: 竞价阶段-100%问题、多次点击关闭提醒会被打开的问题 @zqjimlove
+
+## [1.7.4]
+
+- fix: 股票状态栏新选择的股票数量少于之前的数量时，不会删除未选择的股票的 bug @iporer
+
+## [1.7.3]
+
+- feat: 更新基金数据，比如`010160`
+
+## [1.7.2]
+
+- feat: 基金新增持仓金额升序降序
+- chore: 控制只显示一次错误弹窗（临时处理）
+- chore: 项目工程化信息规范
+
+## [1.7.1]
+
+- perf: 股票接口请求逻辑 @zqjimlove
+- perf: 状态栏个股点击快速更换，自定义状态栏、侧栏模板格式 @zqjimlove
+
+## [1.7.0]
+
+- chore: 提醒的涨跌状态判断从「昨收价-现价」改为「现价-上一秒价」 @zqjimlove
+- fix: 浮点数精度问题 @zqjimlove
+- fix: 基金亏时两个减号问题
 
 ## [1.6.9]
 

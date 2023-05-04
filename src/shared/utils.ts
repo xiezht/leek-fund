@@ -1,11 +1,12 @@
-import { QuickPickItem, ExtensionContext } from 'vscode';
-import { LeekFundConfig } from './leekConfig';
+import { EventEmitter } from 'events';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as vscode from 'vscode';
+import { QuickPickItem, window } from 'vscode';
 import globalState from '../globalState';
+import { LeekFundConfig } from './leekConfig';
 import { LeekTreeItem } from './leekTreeItem';
 import { SortType, StockCategory } from './typed';
-import * as path from 'path';
-import * as fs from 'fs';
-import { EventEmitter } from 'events';
 
 const stockTimes = allStockTimes();
 
@@ -16,7 +17,7 @@ const formatNum = (n: number) => {
 
 export const objectToQueryString = (queryParameters: Object): string => {
   return queryParameters
-    ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
+    ? Object.entries(queryParameters).reduce((queryString, [key, val]) => {
         const symbol = queryString.length === 0 ? '?' : '&';
         queryString += typeof val !== 'object' ? `${symbol}${key}=${val}` : '';
         return queryString;
@@ -24,7 +25,13 @@ export const objectToQueryString = (queryParameters: Object): string => {
     : '';
 };
 
-export const formatDate = (date: Date, seperator = '-') => {
+export const formatDate = (val: Date | string | undefined, seperator = '-') => {
+  let date = new Date();
+  if (typeof val === 'object') {
+    date = val;
+  } else {
+    date = new Date(val || '');
+  }
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -102,7 +109,7 @@ export const toFixed = (value = 0, precision = 2, percent = 1) => {
   return newNum;
 };
 
-export const calcFixedPirceNumber = (
+export const calcFixedPriceNumber = (
   open: string,
   yestclose: string,
   price: string,
@@ -140,9 +147,7 @@ export const formatNumber = (val: number = 0, fixed: number = 2, format = true):
 };
 
 export const sortData = (data: LeekTreeItem[] = [], order = SortType.NORMAL) => {
-  if (order === SortType.NORMAL) {
-    return data;
-  } else {
+  if (order === SortType.ASC || order === SortType.DESC) {
     return data.sort((a: any, b: any) => {
       const aValue = +a.info.percent;
       const bValue = +b.info.percent;
@@ -152,17 +157,33 @@ export const sortData = (data: LeekTreeItem[] = [], order = SortType.NORMAL) => 
         return aValue > bValue ? 1 : -1;
       }
     });
+  } else if (order === SortType.AMOUNTASC || order === SortType.AMOUNTDESC) {
+    return data.sort((a: any, b: any) => {
+      const aValue = a.info.amount - 0;
+      const bValue = b.info.amount - 0;
+      if (order === SortType.AMOUNTDESC) {
+        return aValue > bValue ? -1 : 1;
+      } else {
+        return aValue > bValue ? 1 : -1;
+      }
+    });
+  } else {
+    return data;
   }
 };
 
 export const formatTreeText = (text = '', num = 10): string => {
   const str = text + '';
-  const lenx = num - str.length;
+  const lenx = Math.max(num - str.length, 0);
   return str + ' '.repeat(lenx);
 };
 
 export const caculateEarnings = (money: number, price: number, currentPrice: number): number => {
-  return (money / price) * currentPrice - money;
+  if (Number(currentPrice) > 0) {
+    return (money / price) * currentPrice - money;
+  } else {
+    return 0;
+  }
 };
 
 export const colorOptionList = (): QuickPickItem[] => {
@@ -326,6 +347,12 @@ export function allMarkets(): Array<string> {
       market = StockCategory.HK;
     } else if (/^(usr_)/.test(item)) {
       market = StockCategory.US;
+    } else if (/^(nf_)/.test(item)) {
+      market = StockCategory.Future;
+    } else if (/^[A-Z]+/.test(item)) {
+      market = StockCategory.Future;
+    } else if (/^(hf_)/.test(item)) {
+      market = StockCategory.OverseaFuture;
     }
     if (!result.includes(market)) {
       result.push(market);
@@ -340,21 +367,57 @@ export function allStockTimes(): Map<string, Array<number>> {
   stocks.set(StockCategory.HK, [9, 16]);
   // TODO: 判断夏令时,夏令时交易时间为[21, 4]，非夏令时交易时间为[22, 5]
   stocks.set(StockCategory.US, [21, 5]);
-
+  stocks.set(StockCategory.Future, [21, 15]);
+  stocks.set(StockCategory.OverseaFuture, [9, 7]);
   return stocks;
 }
 
 export function allHolidays(): Map<string, Array<string>> {
   // https://websys.fsit.com.tw/FubonETF/Top/Holiday.aspx
   // 假日日期格式为yyyyMMdd
-  // TODO: 寻找假日API，自动判断假日
   let days = new Map<string, Array<string>>();
   const A = [];
   if (globalState.isHolidayChina) {
     A.push(formatDate(new Date(), ''));
   }
-  const HK = ['20201001', '20201002', '20201026', '20201225'];
-  const US = ['20201126', '20201225'];
+  // https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2020/ce_SEHK_CT_038_2020.pdf
+  const HK = [
+    '20201225',
+    '20210101',
+    '20210212',
+    '20210215',
+    '20210402',
+    '20210405',
+    '20210406',
+    '20210519',
+    '20210614',
+    '20210701',
+    '20210922',
+    '20211001',
+    '20211014',
+    '20211227',
+  ];
+  // https://www.nyse.com/markets/hours-calendars
+  const US = [
+    '20201225',
+    '20210101',
+    '20210118',
+    '20210215',
+    '20210402',
+    '20210531',
+    '20210705',
+    '20210906',
+    '20211125',
+    '20211224',
+    '20220117',
+    '20220221',
+    '20220415',
+    '20220530',
+    '20220704',
+    '20220905',
+    '20221124',
+    '20221226',
+  ];
   days.set(StockCategory.A, A);
   days.set(StockCategory.HK, HK);
   days.set(StockCategory.US, US);
@@ -382,10 +445,101 @@ export function isHoliday(market: string): boolean {
   return false;
 }
 
-export function getTemplateFileContent(tplName: string) {
-  const tplPath = path.join(globalState.context.extensionPath, 'template', tplName);
-  const html = fs.readFileSync(tplPath, 'utf-8');
+function isRemoteLink(link: string) {
+  return /^(https?|vscode-webview-resource|javascript):/.test(link);
+}
+
+export function formatHTMLWebviewResourcesUrl(
+  html: string,
+  conversionUrlFn: (link: string) => string
+) {
+  const LinkRegexp = /\s?(?:src|href)=('|")(.*?)\1/gi;
+  let matcher = LinkRegexp.exec(html);
+
+  while (matcher) {
+    const origin = matcher[0];
+    const originLen = origin.length;
+    const link = matcher[2];
+    if (!isRemoteLink(link)) {
+      let resourceLink = link;
+      try {
+        resourceLink = conversionUrlFn(link);
+        html =
+          html.substring(0, matcher.index) +
+          origin.replace(link, resourceLink) +
+          html.substring(matcher.index + originLen);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    matcher = LinkRegexp.exec(html);
+  }
   return html;
 }
 
+export function getTemplateFileContent(tplPaths: string | string[], webview: vscode.Webview) {
+  if (!Array.isArray(tplPaths)) {
+    tplPaths = [tplPaths];
+  }
+  const tplPath = path.join(globalState.context.extensionPath, 'template', ...tplPaths);
+  const html = fs.readFileSync(tplPath, 'utf-8');
+  const extensionUri = globalState.context.extensionUri;
+  const dirUri = tplPaths.slice(0, -1).join('/');
+  return formatHTMLWebviewResourcesUrl(html, (link) => {
+    return webview
+      .asWebviewUri(vscode.Uri.parse([extensionUri, 'template', dirUri, link].join('/')))
+      .toString();
+  });
+}
+
+export function multi1000(n: number) {
+  return Math.ceil(n * 1000);
+}
+
 export const events = new EventEmitter();
+
+export function formatLabelString(str: string, params: Record<string, any>) {
+  try {
+    str = str.replace(/\$\{(.*?)\}/gi, function (_, $1) {
+      const formatMatch = /(.*?)\s*\|\s*padRight\s*(\|\s*(\d+))?/gi.exec($1);
+
+      if (formatMatch) {
+        return formatTreeText(
+          params[formatMatch[1]],
+          formatMatch[3] ? parseInt(formatMatch[3]) : undefined
+        );
+      } else {
+        return String(params[$1]);
+      }
+    });
+  } catch (err) {
+    // @ts-ignore
+    window.showErrorMessage(`fail: Label format Error, ${str};\n${err.message}`);
+    return '模板格式错误！';
+  }
+  return str;
+}
+
+export function getWebviewResourcesUrl(
+  webview: vscode.Webview,
+  args: string[],
+  _extensionUri: vscode.Uri = globalState.context.extensionUri
+) {
+  return args.map((arg) => {
+    return webview.asWebviewUri(
+      vscode.Uri.parse([_extensionUri.toString(), 'template', arg].join('/'))
+    );
+  });
+}
+
+export function getResourcesImageSrc(
+  webview: vscode.Webview,
+  args: string[],
+  _extensionUri: vscode.Uri = globalState.context.extensionUri
+) {
+  return args.map((arg) => {
+    return webview.asWebviewUri(
+      vscode.Uri.parse([_extensionUri.toString(), 'resources', 'images', arg].join('/'))
+    );
+  });
+}
